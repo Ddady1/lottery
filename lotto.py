@@ -6,6 +6,7 @@ def read_csv(file_path):
     pass
 
 def all_times_stat():
+
     pass
 
 def specific_date(date):
@@ -28,7 +29,8 @@ def by_id(id_num):
 def main():
 
     result_file = read_csv('lotto.csv')
-    print(result_file)
+    #Uncheck the # in the print line in order to check that the function reads the correct file
+    #print(result_file)
 
 if __name__ == '__main__':
 
