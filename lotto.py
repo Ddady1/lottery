@@ -8,12 +8,15 @@ def read_csv(file_path):
 def all_times_stat(file_to_dict):
 
     #print(file_to_dict['no_1'].value_counts())
-    #return file_to_dict.set_index('lottery_id').to_dict('list')
-    df_clean = file_to_dict.loc[:, ~file_to_dict.columns.isin(['lottery_id', 'date'])]
-    print(type(df_clean))
+    df_clean = file_to_dict.to_dict('dict')
+    del df_clean['date']
+    del df_clean['lottery_id']
 
+    #print(len(df_clean))
+    #print(df_clean['no_3'])
+    #print(df_clean)
+    #df_clean = file_to_dict.loc[:, ~file_to_dict.columns.isin(['lottery_id', 'date'])]
 
-    pass
 
 def specific_date(date):
     pass
@@ -37,7 +40,6 @@ def main():
     result_file = read_csv('lotto.csv')
     dict_r = all_times_stat(result_file)
     print(dict_r)
-    print(len(dict_r))
     #Uncheck the # in the print line in order to check that the function reads the correct file
     #print(result_file)
 
