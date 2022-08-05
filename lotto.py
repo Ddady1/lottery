@@ -1,4 +1,5 @@
 import pandas as pd
+from collections import OrderedDict
 import csv
 
 def read_csv(file_path):
@@ -9,28 +10,24 @@ def read_csv(file_path):
 
 def all_times_stat(file_to_dict):
 
-    #print(file_to_dict['no_1'].value_counts())
+    dict_r = {}
+    lists = file_to_dict.values.tolist()
+    for list_item in lists:
+        list_item.pop(0)
+        list_item.pop(0)
+        for l in list_item:
+            if l in dict_r:
+                dict_r[l] += 1
+            else:
+                dict_r[l] = 1
 
+    #dict_r = OrderedDict(sorted(dict_r.items()))
 
-    #for i in range(len(file_to_dict)):
-    #    print(file_to_dict.loc[i, 'no_1'], file_to_dict.loc[i, 'no_2'])
-    dict_c = {}
-    df_clean = file_to_dict.to_dict('dict')
-    del df_clean['date']
-    del df_clean['lottery_id']
-    for key in df_clean:
-        #print(df_clean[key])
-        if df_clean[key][key] in dict_c:
-            temp = dict_c.get(key[key])
-            temp += 1
-            dict_c.update({key: temp})
-        else:
-            dict_c[key][key] = key
-    print(dict_c)
-       #print(len(df_clean))
-    #print(df_clean['no_3'])
-    #print(df_clean['no_1'])
-    #df_clean = file_to_dict.loc[:, ~file_to_dict.columns.isin(['lottery_id', 'date'])]
+    sorted_dict = dict(sorted(dict_r.items(), key=lambda item: item[1], reverse=True))
+
+    #print(dict_r)
+    return sorted_dict
+
 
 
 def specific_date(date):
@@ -40,7 +37,16 @@ def dates_range(d_range):
     pass
 
 def by_id(id_num):
+
     pass
+
+def print_data(data, num):
+
+    if num == 1:
+        print('Printing most LUCKY numbers in descending order:\n________________________________________________\n')
+        df = pd.DataFrame(data.items(), columns=['Number', 'Times'])
+        print(df.to_string(index=False))
+
 
 
 
@@ -54,7 +60,9 @@ def main():
 
     result_file = read_csv('lotto.csv')
     dict_r = all_times_stat(result_file)
-    print(dict_r)
+    print_data(dict_r, 1)
+
+
     #Uncheck the # in the print line in order to check that the function reads the correct file
     #print(result_file)
 
