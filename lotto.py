@@ -21,11 +21,10 @@ def all_times_stat(file_to_dict):
             else:
                 dict_r[l] = 1
 
-    #dict_r = OrderedDict(sorted(dict_r.items()))
+    print(list_item)
 
     sorted_dict = dict(sorted(dict_r.items(), key=lambda item: item[1], reverse=True))
 
-    #print(dict_r)
     return sorted_dict
 
 
