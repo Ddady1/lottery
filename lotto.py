@@ -1,6 +1,7 @@
 import pandas as pd
 from collections import OrderedDict
 import csv
+import webbrowser
 
 def read_csv(file_path):
 
@@ -58,14 +59,16 @@ def print_data(data, power, num):
         print('Printing most LUCKY numbers in descending order:\n==================================================\n')
         df = pd.DataFrame(data.items(), columns=['Number', 'Times'])
         print(df.to_string(index=False))
-        print(df.to_html('power1.html', index=False, justify='center'))
+        print(df.to_html('power.html', index=False, justify='center'))
 
         print('\nPrinting the most LUCKY power numbers in descending order:\n===========================================================\n')
         df = pd.DataFrame(power.items(), columns=['Power Number', 'Times'])
         #print(df.to_string(index=False))
         #print(df.to_html('power.html', index=False, justify='center'))
-        with open('power1.html', 'a') as fhtml:
+        with open('power.html', 'a') as fhtml:
             fhtml.write(df.to_html(index=False, justify='center'))
+
+    webbrowser.open_new_tab('power1.html')
 
 
 
