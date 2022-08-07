@@ -68,7 +68,7 @@ def print_data(data, power, num):
         with open('power.html', 'a') as fhtml:
             fhtml.write(df.to_html(index=False, justify='center'))
 
-    webbrowser.open_new_tab('power1.html')
+    webbrowser.open_new_tab('power.html')
 
 
 
