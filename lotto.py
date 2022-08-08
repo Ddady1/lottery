@@ -2,6 +2,7 @@ import pandas as pd
 from collections import OrderedDict
 import csv
 import webbrowser
+import random
 
 def read_csv(file_path):
 
@@ -53,6 +54,32 @@ def by_id(id_num):
 
     pass
 
+def statistics(data, power):
+
+    stat_num = []
+    for key, value in data.items():
+        if value >= 5:
+            stat_num.append(key)
+
+    stat_power = []
+    for key, value in power.items():
+        if value >= 4:
+            stat_power.append(key)
+
+    nlist = []
+    #for n in range(len(stat_num)):
+    nlist.append(random.sample(stat_num, 6))
+    print(nlist)
+
+    plist = []
+    plist.append(random.sample(stat_power, 1))
+    print(plist)
+
+
+
+
+
+
 def print_data(data, power, num):
 
     if num == 1:
@@ -79,7 +106,8 @@ def main():
     result_file = read_csv('lotto.csv')
     dict_r = all_times_stat(result_file)
     dict_power = power_all_times(result_file)
-    print_data(dict_r, dict_power, 1)
+    #print_data(dict_r, dict_power, 1)
+    statistics(dict_r, dict_power)
 
 
 
