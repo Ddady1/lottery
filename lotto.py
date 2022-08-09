@@ -69,11 +69,12 @@ def statistics(data, power):
     nlist = []
     #for n in range(len(stat_num)):
     nlist.append(random.sample(stat_num, 6))
-    print(nlist)
+    print(f'The numbers are: {nlist}')
+
 
     plist = []
     plist.append(random.sample(stat_power, 1))
-    print(plist)
+    print(f'The power number is: {plist}')
 
 
 
@@ -108,7 +109,6 @@ def main():
     dict_power = power_all_times(result_file)
     #print_data(dict_r, dict_power, 1)
     statistics(dict_r, dict_power)
-
 
 
     #Uncheck the # in the print line in order to check that the function reads the correct file
