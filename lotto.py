@@ -66,6 +66,8 @@ def statistics(data, power):
         if value >= 4:
             stat_power.append(key)
 
+
+
     nlist = []
     #for n in range(len(stat_num)):
     nlist.append(random.sample(stat_num, 6))
@@ -75,6 +77,7 @@ def statistics(data, power):
     plist = []
     plist.append(random.sample(stat_power, 1))
     print(f'The power number is: {plist}')
+
 
 
 
